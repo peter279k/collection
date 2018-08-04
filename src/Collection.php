@@ -17,6 +17,11 @@ namespace Sunrise\Collection;
 use ArrayIterator, IteratorAggregate, Traversable;
 
 /**
+ * Import functions
+ */
+use function array_key_exists, array_map, array_replace_recursive, array_search, in_array, count;
+
+/**
  * Collection
  *
  * @package Sunrise\Collection
