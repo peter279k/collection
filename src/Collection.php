@@ -14,7 +14,7 @@ namespace Sunrise\Collection;
 /**
  * Import classes
  */
-use ArrayIterator, IteratorAggregate, Traversable;
+use ArrayIterator, Traversable;
 
 /**
  * Import functions
@@ -26,7 +26,7 @@ use function array_key_exists, array_map, array_replace_recursive, array_search,
  *
  * @package Sunrise\Collection
  */
-class Collection implements IteratorAggregate
+class Collection implements CollectionInterface
 {
 
 	/**
@@ -37,7 +37,7 @@ class Collection implements IteratorAggregate
 	protected $items = [];
 
 	/**
-	 * Constructor of the class
+	 * {@inheritDoc}
 	 */
 	public function __construct(iterable $items = [])
 	{
@@ -48,17 +48,9 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Gets an external iterator
+	 * {@inheritDoc}
 	 */
-	public function getIterator() : ArrayIterator
-	{
-		return new ArrayIterator($this->items);
-	}
-
-	/**
-	 * Adds the given value to the collection
-	 */
-	public function add($value) : self
+	public function add($value) : CollectionInterface
 	{
 		$this->items[] = $value;
 
@@ -66,9 +58,9 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Sets the given key/value pair to the collection
+	 * {@inheritDoc}
 	 */
-	public function set($key, $value) : self
+	public function set($key, $value) : CollectionInterface
 	{
 		$this->items[$key] = $value;
 
@@ -76,9 +68,7 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Gets a value for the given key from the collection
-	 *
-	 * If the given key is not found in the collection, returns the given default value.
+	 * {@inheritDoc}
 	 */
 	public function get($key, $default = null)
 	{
@@ -91,9 +81,7 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Removes a value for the given key from the collection
-	 *
-	 * If the given key is not found in the collection, returns the given default value.
+	 * {@inheritDoc}
 	 */
 	public function remove($key, $default = null)
 	{
@@ -110,23 +98,22 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Searches the given value in the collection
-	 *
-	 * If the given value is found in the collection, returns its corresponding key.
-	 *
-	 * If the given value is not found in the collection, returns false.
+	 * {@inheritDoc}
 	 */
-	public function search($value)
+	public function search($value, $default = false)
 	{
-		return array_search($value, $this->items);
+		$offset = array_search($value, $this->items, false);
+
+		if ($offset === false)
+		{
+			return $default;
+		}
+
+		return $offset;
 	}
 
 	/**
-	 * Checks if the given key exists in the collection
-	 *
-	 * If the given key is found in the collection, returns true.
-	 *
-	 * If the given key is not found in the collection, returns false.
+	 * {@inheritDoc}
 	 */
 	public function exists($key) : bool
 	{
@@ -134,11 +121,7 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Checks if the given value contains in the collection
-	 *
-	 * If the given value is found in the collection, returns true.
-	 *
-	 * If the given value is not found in the collection, returns false.
+	 * {@inheritDoc}
 	 */
 	public function contains($value) : bool
 	{
@@ -146,13 +129,9 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Updates the collection using the given items
-	 *
-	 * If an item is found in the collection, it will not be overwritten.
-	 *
-	 * If an item is not found in the collection, it will be added.
+	 * {@inheritDoc}
 	 */
-	public function update(array $items) : self
+	public function update(array $items) : CollectionInterface
 	{
 		$this->items = array_replace_recursive($items, $this->items);
 
@@ -160,13 +139,9 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Upgrades the collection using the given items
-	 *
-	 * If an item is found in the collection, it will be overwritten.
-	 *
-	 * If an item is not found in the collection, it will be added.
+	 * {@inheritDoc}
 	 */
-	public function upgrade(array $items) : self
+	public function upgrade(array $items) : CollectionInterface
 	{
 		$this->items = array_replace_recursive($this->items, $items);
 
@@ -174,9 +149,9 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Clears the collection
+	 * {@inheritDoc}
 	 */
-	public function clear() : self
+	public function clear() : CollectionInterface
 	{
 		$this->items = [];
 
@@ -184,15 +159,7 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Gets the number of items in the collection
-	 */
-	public function count() : int
-	{
-		return count($this->items);
-	}
-
-	/**
-	 * Gets the items of the collection as is
+	 * {@inheritDoc}
 	 */
 	public function all() : array
 	{
@@ -200,13 +167,13 @@ class Collection implements IteratorAggregate
 	}
 
 	/**
-	 * Converts the collection to an array
+	 * {@inheritDoc}
 	 */
 	public function toArray() : array
 	{
 		return array_map(function($item)
 		{
-			if ($item instanceof Collection)
+			if ($item instanceof CollectionInterface)
 			{
 				return $item->toArray();
 			}
@@ -221,5 +188,21 @@ class Collection implements IteratorAggregate
 			return $item;
 
 		}, $this->items);
+	}
+
+	/**
+	 * Gets the number of items in the collection
+	 */
+	public function count()
+	{
+		return count($this->items);
+	}
+
+	/**
+	 * Gets an external iterator
+	 */
+	public function getIterator()
+	{
+		return new ArrayIterator($this->items);
 	}
 }

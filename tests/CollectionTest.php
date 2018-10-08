@@ -4,6 +4,7 @@ namespace Sunrise\Collection\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Sunrise\Collection\Collection;
+use Sunrise\Collection\CollectionInterface;
 
 class CollectionTest extends TestCase
 {
@@ -12,6 +13,8 @@ class CollectionTest extends TestCase
 		$collection = new Collection();
 
 		$this->assertCollectionStoreEquals($collection, []);
+
+		$this->assertInstanceOf(CollectionInterface::class, $collection);
 	}
 
 	public function testConstructorWithData()
@@ -25,13 +28,13 @@ class CollectionTest extends TestCase
 	{
 		$collection = new Collection();
 
-		$this->assertInstanceOf(Collection::class, $collection->add(0));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->add(0));
 		$this->assertCollectionStoreEquals($collection, [0]);
 
-		$this->assertInstanceOf(Collection::class, $collection->add(1));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->add(1));
 		$this->assertCollectionStoreEquals($collection, [0, 1]);
 
-		$this->assertInstanceOf(Collection::class, $collection->add(2));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->add(2));
 		$this->assertCollectionStoreEquals($collection, [0, 1, 2]);
 	}
 
@@ -39,13 +42,13 @@ class CollectionTest extends TestCase
 	{
 		$collection = new Collection();
 
-		$this->assertInstanceOf(Collection::class, $collection->set(0, 0));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->set(0, 0));
 		$this->assertCollectionStoreEquals($collection, [0]);
 
-		$this->assertInstanceOf(Collection::class, $collection->set(0, 1));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->set(0, 1));
 		$this->assertCollectionStoreEquals($collection, [1]);
 
-		$this->assertInstanceOf(Collection::class, $collection->set(1, 2));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->set(1, 2));
 		$this->assertCollectionStoreEquals($collection, [1, 2]);
 	}
 
@@ -84,6 +87,8 @@ class CollectionTest extends TestCase
 		$this->assertEquals('key', $collection->search('value'));
 
 		$this->assertEquals(false, $collection->search('undefined'));
+
+		$this->assertEquals(-1, $collection->search('undefined', -1));
 	}
 
 	public function testExists()
@@ -108,7 +113,7 @@ class CollectionTest extends TestCase
 	{
 		$collection = new Collection([[0]]);
 
-		$this->assertInstanceOf(Collection::class, $collection->update([[1], [1]]));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->update([[1], [1]]));
 		$this->assertCollectionStoreEquals($collection, [[0], [1]]);
 	}
 
@@ -116,7 +121,7 @@ class CollectionTest extends TestCase
 	{
 		$collection = new Collection([[0]]);
 
-		$this->assertInstanceOf(Collection::class, $collection->upgrade([[1], [1]]));
+		$this->assertInstanceOf(CollectionInterface::class, $collection->upgrade([[1], [1]]));
 		$this->assertCollectionStoreEquals($collection, [[1], [1]]);
 	}
 
@@ -124,7 +129,7 @@ class CollectionTest extends TestCase
 	{
 		$collection = new Collection([0]);
 
-		$this->assertInstanceOf(Collection::class, $collection->clear());
+		$this->assertInstanceOf(CollectionInterface::class, $collection->clear());
 		$this->assertCollectionStoreEquals($collection, []);
 	}
 
