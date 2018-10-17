@@ -5,3 +5,9 @@
 [![Latest Stable Version](https://poser.pugx.org/sunrise/collection/v/stable)](https://packagist.org/packages/sunrise/collection)
 [![Total Downloads](https://poser.pugx.org/sunrise/collection/downloads)](https://packagist.org/packages/sunrise/collection)
 [![License](https://poser.pugx.org/sunrise/collection/license)](https://packagist.org/packages/sunrise/collection)
+
+# Install
+
+```
+composer require sunrise/collection
+```
