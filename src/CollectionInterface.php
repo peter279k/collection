@@ -19,8 +19,6 @@ use IteratorAggregate;
 
 /**
  * CollectionInterface
- *
- * @package Sunrise\Collection
  */
 interface CollectionInterface extends Countable, IteratorAggregate
 {

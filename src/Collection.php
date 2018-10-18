@@ -23,8 +23,6 @@ use function array_key_exists, array_map, array_replace_recursive, array_search,
 
 /**
  * Collection
- *
- * @package Sunrise\Collection
  */
 class Collection implements CollectionInterface
 {
