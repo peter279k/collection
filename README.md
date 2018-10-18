@@ -23,3 +23,7 @@ $payload = new Collection($_POST);
 $payload->get('key', 'default');
 
 ```
+
+## Api documentation
+
+https://phpdoc.fenric.ru/
