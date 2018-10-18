@@ -15,13 +15,11 @@ composer require sunrise/collection
 ## How to use
 
 ```php
-
 use Sunrise\Collection\Collection;
 
 $payload = new Collection($_POST);
 
 $payload->get('key', 'default');
-
 ```
 
 ## Api documentation
