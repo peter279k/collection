@@ -192,6 +192,8 @@ class Collection implements CollectionInterface
 
 	/**
 	 * Gets the number of items in the collection
+	 *
+	 * @return int
 	 */
 	public function count()
 	{
@@ -200,6 +202,8 @@ class Collection implements CollectionInterface
 
 	/**
 	 * Gets an external iterator
+	 *
+	 * @return ArrayIterator
 	 */
 	public function getIterator()
 	{
