@@ -1,4 +1,4 @@
-# :school_satchel: Sunrise Collection
+# :handbag: Sunrise Collection
 
 [![Build Status](https://api.travis-ci.com/sunrise-php/collection.svg?branch=master)](https://travis-ci.com/sunrise-php/collection)
 [![CodeFactor](https://www.codefactor.io/repository/github/sunrise-php/collection/badge)](https://www.codefactor.io/repository/github/sunrise-php/collection)
