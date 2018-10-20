@@ -26,5 +26,4 @@ $payload->get('key', 'default');
 
 https://phpdoc.fenric.ru/
 
-###### &nbsp;
 ###### With :heart: for you
