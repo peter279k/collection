@@ -178,7 +178,7 @@ class Collection implements CollectionInterface
 
 			if ($item instanceof Traversable)
 			{
-				$item = new Collection($item);
+				$item = new static($item);
 
 				return $item->toArray();
 			}
