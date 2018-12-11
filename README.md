@@ -1,5 +1,6 @@
 # Simple Collection for PHP 7.2+
 
+[![Gitter](https://badges.gitter.im/sunrise-php/support.png)](https://gitter.im/sunrise-php/support)
 [![Build Status](https://api.travis-ci.com/sunrise-php/collection.svg?branch=master)](https://travis-ci.com/sunrise-php/collection)
 [![CodeFactor](https://www.codefactor.io/repository/github/sunrise-php/collection/badge)](https://www.codefactor.io/repository/github/sunrise-php/collection)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sunrise-php/collection/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sunrise-php/collection/?branch=master)
