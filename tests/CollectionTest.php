@@ -154,14 +154,21 @@ class CollectionTest extends TestCase
 		$this->assertEquals([[0]], $collection->toArray());
 	}
 
+	public function testIsCountable()
+	{
+		$collection = new Collection([0, 1, 2]);
+
+		$this->assertEquals(3, \count($collection));
+	}
+
 	public function testIsIterable()
 	{
 		$collection = new Collection();
 
-		$this->assertTrue(is_iterable($collection));
+		$this->assertTrue(\is_iterable($collection));
 	}
 
-	private function assertCollectionStoreEquals(Collection $collection, $expected)
+	private function assertCollectionStoreEquals(CollectionInterface $collection, $expected)
 	{
 		$property = new \ReflectionProperty($collection, 'items');
 

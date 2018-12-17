@@ -147,7 +147,7 @@ interface CollectionInterface extends Countable, IteratorAggregate
 	public function clear() : CollectionInterface;
 
 	/**
-	 * Gets the items of the collection as is
+	 * Gets the collection items as is
 	 *
 	 * @return array
 	 */
