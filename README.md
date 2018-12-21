@@ -1,4 +1,4 @@
-# Simple Collection for PHP 7.2+
+# Simple Collection for PHP 7.1+
 
 [![Gitter](https://badges.gitter.im/sunrise-php/support.png)](https://gitter.im/sunrise-php/support)
 [![Build Status](https://api.travis-ci.com/sunrise-php/collection.svg?branch=master)](https://travis-ci.com/sunrise-php/collection)
