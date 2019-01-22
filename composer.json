@@ -1,7 +1,7 @@
 {
     "name": "sunrise/collection",
-    "description": "Sunrise Collection",
-    "keywords": ["fenric", "sunrise", "collection"],
+    "description": "Simple Collection for PHP 7.1+",
+    "keywords": ["fenric", "sunrise", "collection", "array"],
     "homepage": "https://github.com/sunrise-php/collection",
     "license": "MIT",
     "authors": [{
